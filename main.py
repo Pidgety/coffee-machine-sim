@@ -50,19 +50,30 @@ resources = {
 # == FUNCTIONS ==
 
 def check_resources(drink):
-    if resources["water"] < MENU[user_choice]["ingredients"].get("water"):
+    """Takes one argument - the name of a drink selected by the user
+    - and returns False if any of the resources in the coffee machine
+    are lower than those required to make the drink.  Returns True if
+    all resources are sufficient."""
+    if resources["water"] < MENU[drink]["ingredients"].get("water"):
         print("Sorry, there is not enough water.")
         return False
-    if resources["milk"] < MENU[user_choice]["ingredients"].get("milk", 0):
+    if resources["milk"] < MENU[drink]["ingredients"].get("milk", 0):
         print("Sorry, there is not enough milk.")
         return False
-    if resources["coffee"] < MENU[user_choice]["ingredients"].get("coffee"):
+    if resources["coffee"] < MENU[drink]["ingredients"].get("coffee"):
         print("Sorry, there is not enough coffee.")
         return False
     return True
 
 
 def cash_handling(price):
+    """Takes one argument - the price of the drink selected by the user.
+    Informs the user of the price, and prompts user to input how many
+    of each coin type they are inserting into the machine.
+    Calculates total value of coins inserted and returns True
+    (and the value of price) if the amount is sufficient or False 
+    (and a value of 0) if insufficient."""
+
     print(f"Please enter £{price}")
     cash_entered = 0
     message = "\nPlease enter a number."
@@ -110,7 +121,7 @@ money = 0
 
 is_on = True
 while is_on:
-    user_choice = input("\nWhat would you like? (espresso, latte, cappucino): ")
+    user_choice = input("\nWhat would you like? (espresso, latte, cappuccino): ")
     if user_choice.lower() == "off":
         print("\nCoffee machine is now off!")
         is_on = False
@@ -123,7 +134,6 @@ while is_on:
         if enough_resources:
             # Ask user to enter money, and handle payment
             ok_to_serve = cash_handling(MENU[user_choice]["cost"])
-            print(ok_to_serve)
             if ok_to_serve[0]:
                 money += ok_to_serve[1]
                 resources["water"] -= MENU[user_choice]["ingredients"].get("water")
