@@ -17,7 +17,7 @@ MENU = {
             "water": 50,
             "coffee": 18,
         },
-        "cost": 1.5,
+        "cost": 1.90,
     },
     "latte": {
         "ingredients": {
@@ -25,7 +25,7 @@ MENU = {
             "milk": 150,
             "coffee": 24,
         },
-        "cost": 2.5,
+        "cost": 2.60,
     },
     "cappuccino": {
         "ingredients": {
@@ -33,7 +33,7 @@ MENU = {
             "milk": 100,
             "coffee": 24,
         },
-        "cost": 3.0,
+        "cost": 2.80,
     }
 }
 
@@ -63,45 +63,45 @@ def check_resources(drink):
 
 
 def cash_handling(price):
-    print(f"Please enter ${price}")
+    print(f"Please enter £{price}")
     cash_entered = 0
     message = "\nPlease enter a number."
 
-    quarters = input("\nNo. of quarters: ") #0.25
-    while not quarters.isnumeric():
+    pounds = input("\nNo. of one pound coins: ") #1.00
+    while not pounds.isnumeric():
         print(message)
-        quarters = input("\nNo. of quarters: ")
-    quarters = int(quarters)
+        pounds = input("\nNo. of pound coins: ")
+    pounds = int(pounds)
 
-    dimes = input("\nNo. of dimes: ") #0.10
-    while not dimes.isnumeric():
+    fifties = input("\nNo. of fifty pence coins: ") #0.50
+    while not fifties.isnumeric():
         print(message)
-        dimes = input("\nNo. of dimes: ")
-    dimes = int(dimes)
+        fifties = input("\nNo. of fifty pence coins: ")
+    fifties = int(fifties)
 
-    nickels = input("\nNo. of nickels: ") #0.05
-    while not nickels.isnumeric():
+    twenties = input("\nNo. of twenty pence coins: ") #0.20
+    while not twenties.isnumeric():
         print(message)
-        nickels = input("\nNo. of nickels: ")
-    nickels = int(nickels)
+        twenties = input("\nNo. of twenty pence coins: ")
+    twenties = int(twenties)
 
-    pennies = input("\nNo. of pennies: ") #0.01
-    while not pennies.isnumeric():
+    tens = input("\nNo. of ten pence coins: ") #0.10
+    while not tens.isnumeric():
         print(message)
-        pennies = input("\nNo. of pennies: ")
-    pennies = int(pennies)
+        tens = input("\nNo. of ten pence coins: ")
+    tens = int(tens)
 
-    cash_entered = ((quarters * 0.25) + (dimes * 0.10) + 
-                    (nickels * 0.05) + (pennies * 0.01))
+    cash_entered = ((pounds * 1.00) + (fifties * 0.50) +
+                    (twenties * 0.20) + (tens * 0.10))
 
     # prompt user to enter coins - check numeric / convert to int.
     # calculate total
     if cash_entered >= price:
         change = round(cash_entered - price, 2)
-        print(f"\nChange: ${change}")
+        print(f"\nChange: £{change}")
         return True, price
 
-    print(f"\nSorry, you only entered ${cash_entered} of ${price}\n"
+    print(f"\nSorry, you only entered £{cash_entered} of £{price}\n"
         f"Refund: {cash_entered}")
     return False, 0
 
@@ -117,7 +117,7 @@ while is_on:
     elif user_choice.lower() =="report":
         print("\n\033[1mResources Report:\033[0m")
         print(f"Water:\t{resources["water"]} ml\nMilk:\t{resources["milk"]} ml")
-        print(f"Coffee:\t{resources["coffee"]} g\nMoney:\t$ {money}")
+        print(f"Coffee:\t{resources["coffee"]} g\nMoney:\t£ {money}")
     elif user_choice in MENU:
         enough_resources = check_resources(user_choice)
         if enough_resources:
