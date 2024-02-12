@@ -74,7 +74,7 @@ def cash_handling(price):
     (and the value of price) if the amount is sufficient or False 
     (and a value of 0) if insufficient."""
 
-    print(f"Please enter £{price}")
+    print(f"Please enter £{price:.2f}")
     cash_entered = 0
     message = "\nPlease enter a number."
 
@@ -109,11 +109,11 @@ def cash_handling(price):
     # calculate total
     if cash_entered >= price:
         change = round(cash_entered - price, 2)
-        print(f"\nChange: £{change}")
+        print(f"\nChange: £{change:.2f}")
         return True, price
 
-    print(f"\nSorry, you only entered £{cash_entered} of £{price}\n"
-        f"Refund: {cash_entered}")
+    print(f"\nSorry, you only entered £{cash_entered:.2f} of £{price:.2f}\n"
+        f"Refund: £{cash_entered:.2f}")
     return False, 0
 
 # == MAIN ROUTINE ==
