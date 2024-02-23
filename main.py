@@ -44,8 +44,6 @@ resources = {
 }
 
 # ======== MY SOLUTION ========
-# Please note: the code below may not be an optimal solution but reflects
-# my knowledge at the time of creation (26/01/2024)
 
 # == FUNCTIONS ==
 
@@ -128,7 +126,7 @@ while is_on:
     elif user_choice.lower() =="report":
         print("\n\033[1mResources Report:\033[0m")
         print(f"Water:\t{resources["water"]} ml\nMilk:\t{resources["milk"]} ml")
-        print(f"Coffee:\t{resources["coffee"]} g\nMoney:\t£ {money}")
+        print(f"Coffee:\t{resources["coffee"]} g\nMoney:\t£ {money:.2f}")
     elif user_choice in MENU:
         enough_resources = check_resources(user_choice)
         if enough_resources:
