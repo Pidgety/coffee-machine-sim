@@ -8,14 +8,35 @@ The project idea and starter dictionaries come from the Udemy course, 100 Days o
 
 https://www.udemy.com/course/100-days-of-code/
 
-## Download / Installation
+## Technologies
 
-The only file required to run this program is main.py
+This project was created using:
+
+* Python 3.12
 
 For information on installing Python 3, please see the link below:
 
 https://www.python.org/downloads/
 
+
+## Setup
+
+To run this project, save the following file locally:
+
+* main.py
+
+To run the script:
+
+* open the terminal or command-line interface
+* navigate into the folder containing the file
+* for Windows, enter the following command :
+```
+python main.py
+```
+* for Mac/Linux:
+```
+python3 main.py
+```
 
 ## Instructions for use
 
